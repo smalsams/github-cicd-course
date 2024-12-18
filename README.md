@@ -33,6 +33,9 @@ Sources for practice lecture about containers used in NSWI026 MFF UK and SEPA4M3
           - os: windows-latest
             python-version: "3.10"
     ```
+    - Don't forget to use matrix value `${{ matrix.os }}` in `jobs.test.runs-on` and `${{ matrix.python-version }}` in `jobs.test.steps[2].with.python-version`
+    - Rename artifact to `Report-${{ matrix.os }}-${{ matrix.python-version }}` get rid of name conflicts
+    - Take a look on reports, check Platform section if everything works as expected
 
 ### On pull request
 
