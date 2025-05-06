@@ -8,6 +8,11 @@ jobs:
     name: pytest
     steps:
         - uses: actions/checkout@v4
+        - name: Upload artifact
+          uses: actions/upload-artifact@v4
+          with: 
+            name: report.html
+            path: ./task_a
         - name: Set up Python
           uses: actions/setup-python@v5
           with:
