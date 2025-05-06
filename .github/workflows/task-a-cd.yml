@@ -19,7 +19,7 @@ jobs:
         - name: Run tests
           run: |
             pytest --html=report.html ./task_a/task_a.py
-        - uses: actions/upload_artifact@v4
+        - uses: actions/upload-artifact@v4
           if: always()
           with:
             name: report
