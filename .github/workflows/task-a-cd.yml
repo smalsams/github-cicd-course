@@ -2,9 +2,19 @@ name: task-a cd
 
 on: [push]
 
+
 jobs:
   test:
-    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.10", "3.11", "pypy3.10"]
+        exclude:
+          - os: macos-latest
+            python-version: "3.10"
+          - os: windows-latest
+            python-version: "3.10"
+    runs-on: ${{ matrix.os }}
     name: pytest
     steps:
         - uses: actions/checkout@v4
