@@ -8,7 +8,6 @@ jobs:
     name: pytest
     steps:
         - uses: actions/checkout@v4
-        
         - name: Set up Python
           uses: actions/setup-python@v5
           with:
@@ -19,5 +18,10 @@ jobs:
             pip install -r ./task_a/requirements.txt
         - name: Run tests
           run: |
-            pytest --html=report.html ./task_a/task_a.py
+            pytest ./task_a/task_a.py
+        - uses: actions/upload_artifact@v4
+          if: always()
+          with:
+            name: report
+            path: ./task_a/report.html
 
